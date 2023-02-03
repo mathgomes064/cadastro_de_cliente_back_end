@@ -2,6 +2,7 @@ import { Client } from "../../entities/client.entity";
 import { IClientCreate } from "../../interfaces/clients";
 import { AppDataSource } from "../../data-source";
 import bcrypt from "bcrypt"
+import { AppError } from "../../errors/appErro";
 
 const clientCreateService = async({name, email, password, telefone}: IClientCreate) =>{
     const clientRepository = AppDataSource.getRepository(Client)
@@ -10,7 +11,7 @@ const clientCreateService = async({name, email, password, telefone}: IClientCrea
     const emailAlreadyExists = clients.find((client) => client.email === email)
 
     if(emailAlreadyExists){
-        throw new Error("Email Already Existis")
+        throw new AppError(409, "Email Already Existis")
     }
 
     const client = new Client()

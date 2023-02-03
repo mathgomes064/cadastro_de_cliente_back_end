@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AppError, handleError } from "../../errors/appErro";
 import clientUpdateService from "../../services/clients/clientUpdate.service";
 
 const clientUpdateController = async(req: Request, res: Response) =>{
@@ -9,11 +10,8 @@ const clientUpdateController = async(req: Request, res: Response) =>{
         const updateClient = await clientUpdateService(client, id)
         return res.json({ message: "Updated Client", updateClient });
     } catch (err) {
-        if(err instanceof Error){
-            return res.status(401).send({
-                error: err.name,
-                massage: err.message
-            })
+        if(err instanceof AppError){
+            handleError(err, res)
         }
     }
 }

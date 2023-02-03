@@ -3,6 +3,7 @@ import { AppDataSource } from "../../data-source"
 import { Client } from "../../entities/client.entity"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import { AppError } from "../../errors/appErro"
 
 const clientLoginService = async({ email, password}: IClientLogin) =>{
     const clientRepository = AppDataSource.getRepository(Client)
@@ -11,7 +12,7 @@ const clientLoginService = async({ email, password}: IClientLogin) =>{
     const account = clients.find((client) => client.email === email)
 
     if(!account){
-        throw new Error("Wrong email/password")
+        throw new AppError(403, "Wrong email/password")
     }
 
     if(!bcrypt.compareSync(password, account.password)){

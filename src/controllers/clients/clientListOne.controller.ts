@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { AppError, handleError } from "../../errors/appErro";
 import clientListOneService from "../../services/clients/clientListOne.service";
 
 const clientListOneController = async(req: Request, res: Response) =>{
@@ -10,11 +11,8 @@ const clientListOneController = async(req: Request, res: Response) =>{
        return res.status(200).send(client)
 
     } catch (err) {
-        if(err instanceof Error){
-            return res.status(401).send({
-                error: err.name,
-                message: err.message,
-            })
+        if(err instanceof AppError){
+            handleError(err, res)
         }
     }
 }

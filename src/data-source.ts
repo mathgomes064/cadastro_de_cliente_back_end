@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm"
 import { Client } from "./entities/client.entity";
+import { Contact } from "./entities/contact.entity";
 
 require("dotenv").config();
 
@@ -14,7 +15,7 @@ export const AppDataSource = new DataSource({
 
     synchronize: false,
     logging: true,
-    entities: [Client],
+    entities: [Client, Contact],
     migrations: ["src/migrations/*.ts"],
 })
 

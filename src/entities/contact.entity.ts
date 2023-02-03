@@ -1,11 +1,11 @@
-import {Entity, Column, PrimaryColumn, OneToMany} from "typeorm"
+import {Entity, Column, PrimaryColumn, ManyToOne} from "typeorm"
 import { v4 as uuid } from "uuid"
-import { Contact } from "./contact.entity"
+import { Client } from "./client.entity"
 
-// lado one
-   
+// lado many
+
 @Entity()
-export class Client{
+export class Contact{
     @PrimaryColumn("uuid")
     readonly id: string
 
@@ -16,18 +16,13 @@ export class Client{
     email: string
 
     @Column()
-    password: string
-
-    @Column()
     telefone: string
 
     @Column()
     created_at: Date
 
-    @OneToMany(() => Contact, contact => contact.client, {
-        eager: true
-    })
-    contacts: Contact[]
+    @ManyToOne(() => Client, client => client.contacts)
+    client: Client
 
     constructor(){
         if(!this.id){
