@@ -3,11 +3,12 @@ import clientListOneService from "../../services/clients/clientListOne.service";
 
 const clientListOneController = async(req: Request, res: Response) =>{
     try {
-        const client = await clientListOneService({
-            authorization: req.headers.authorization
-        })
+       const email = req.clientEmail
 
-        return res.status(201).send(client)
+       const client = await clientListOneService(email)
+
+       return res.status(200).send(client)
+
     } catch (err) {
         if(err instanceof Error){
             return res.status(401).send({

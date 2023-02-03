@@ -19,6 +19,16 @@ export interface IClientLogin{
     password: string
 }
 
-export interface IClientListOne{
-    authorization?: string
+export interface IClientUpdate{
+    name?: string
+    email?: string
+    password?: string
+    telefone?: string
+}
+
+export interface IClientDeleted{
+    name?: string
+    email?: string
+    password?: string
+    telefone?: string
 }
