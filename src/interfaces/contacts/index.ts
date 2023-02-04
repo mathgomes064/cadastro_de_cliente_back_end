@@ -10,6 +10,7 @@ export interface IContactCreate{
     name: string
     email: string
     telefone: string
+    clientId: string
 }
 
 export interface IContactUpdate{

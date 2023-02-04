@@ -18,7 +18,4 @@ routes.get("/clients/me", authClient, clientListOneController)
 routes.patch("/clients/:id", authClient, clientUpdateController)
 routes.delete("/clients/:id", authClient, clientDeleteSelfController)
 
-
-
-
 export default routes

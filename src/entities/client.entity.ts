@@ -24,10 +24,10 @@ export class Client{
     @Column()
     created_at: Date
 
-    @OneToMany(() => Contact, contact => contact.client, {
+    @OneToMany((type) => Contact, contact => contact.client, {
         eager: true
     })
-    contacts: Contact[]
+    contact: Contact[]
 
     constructor(){
         if(!this.id){

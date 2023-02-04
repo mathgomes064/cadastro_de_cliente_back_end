@@ -21,7 +21,7 @@ export class Contact{
     @Column()
     created_at: Date
 
-    @ManyToOne(() => Client, client => client.contacts)
+    @ManyToOne((type) => Client, client => client.contact)
     client: Client
 
     constructor(){
