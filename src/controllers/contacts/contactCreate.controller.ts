@@ -6,6 +6,7 @@ import contactCreateService from "../../services/contacts/contactCreate.service"
 const contactCreateController = async(req: Request, res: Response) =>{
     try {
         const contact: IContactCreate = req.body
+        console.log(contact)
 
         const newContact = await contactCreateService(contact)
         

@@ -11,23 +11,16 @@ const contactCreateService = async({name, email, telefone, clientId}: IContactCr
         where: {id: clientId}
     })
 
-    // const contact = contactRepository.create({
-    //     name,
-    //     email,
-    //     telefone,
-    //     created_at,
-    //     client: clients
-    // })
-
-    // const contact = new Contact()
-    // contact.name = name
-    // contact.email = email
-    // contact.telefone = telefone
-    // contact.created_at = new Date()
-    // contact.client = clients
-
+    const contact = new Contact()
+    contact.name = name
+    contact.email = email
+    contact.telefone = telefone
+    contact.created_at = new Date()
+    contact.client = clients!
+    
     contactRepository.create(contact)
     await contactRepository.save(contact)
+    
 
     return contact
 }
