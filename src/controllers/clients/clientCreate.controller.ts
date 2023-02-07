@@ -4,9 +4,8 @@ import clientCreateService from "../../services/clients/clientCreate.service"
 
 const clientCreateController = async(req: Request, res: Response) =>{
     try {
-        const {name, email, password, telefone} = req.body
-
-        const newClient = await clientCreateService({name, email, password, telefone})
+        const {name, email, senha, telefone} = req.body
+        const newClient = await clientCreateService({name, email, senha, telefone})
 
         return res.status(201).send(newClient)
         

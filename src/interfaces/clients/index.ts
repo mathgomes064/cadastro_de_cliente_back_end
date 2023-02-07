@@ -10,7 +10,7 @@ export interface IClient{
 export interface IClientCreate{
     name: string
     email: string
-    password: string
+    senha: string
     telefone: string
 }
 

@@ -5,6 +5,7 @@ import clientLoginService from "../../services/clients/clientLogin.service";
 const clientLoginController = async(req: Request, res: Response) =>{
     try {
         const {email, password} = req.body
+        console.log(req.body)
         const token = await clientLoginService({email, password})
 
         return res.status(201).json({token})
