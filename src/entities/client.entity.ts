@@ -25,7 +25,8 @@ export class Client{
     created_at: Date
 
     @OneToMany((type) => Contact, contact => contact.client, {
-        eager: true
+        eager: true,
+        onDelete: "CASCADE"
     })
     contact: Contact[]
 

@@ -6,16 +6,13 @@ const clientDeleteSelfService = async(id: string) =>{
     const clientRepository = AppDataSource.getRepository(Client)
 
     const clients = await clientRepository.findOneBy({ id })
-
+    
     if (!clients) {
         throw new Error("user not found");
     }
 
-    await clientRepository.delete(clients) 
+    await clientRepository.delete({id}) 
 
-    const deletedClient = await clientRepository.findOneBy({ id: id });
-
-    return deletedClient!
 }
 
 export default clientDeleteSelfService

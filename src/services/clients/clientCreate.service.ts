@@ -4,7 +4,7 @@ import { AppDataSource } from "../../data-source";
 import bcrypt from "bcrypt"
 import { AppError } from "../../errors/appErro";
 
-const clientCreateService = async({name, email, senha, telefone}: IClientCreate) =>{
+const clientCreateService = async({name, email, password, telefone}: IClientCreate) =>{
     const clientRepository = AppDataSource.getRepository(Client)
     const clients = await clientRepository.find()
 
@@ -17,7 +17,7 @@ const clientCreateService = async({name, email, senha, telefone}: IClientCreate)
     const client = new Client()
     client.name = name
     client.email = email
-    client.password = bcrypt.hashSync(senha, 10)
+    client.password = bcrypt.hashSync(password, 10)
     client.telefone = telefone
     client.created_at = new Date()
 

@@ -5,7 +5,6 @@ import clientDeleteSelfService from "../../services/clients/clientDeleteSelf.ser
 const clientDeleteSelfController = async(req: Request, res: Response) =>{
     try {
         const id = req.params.id
-
         const deletedClient = await clientDeleteSelfService(id)
         return res.status(204).json("");
     } catch (err) {
